@@ -27,9 +27,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 
-RUN apt-get update && apt-get install -y python${PYTHON_VERSION}-distutils \
-    &&  apt-get clean \
-    &&  rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    python${PYTHON_VERSION} \
+    python${PYTHON_VERSION}-distutils
+
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
