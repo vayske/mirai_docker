@@ -27,11 +27,19 @@ RUN apt-get update && apt-get install -y \
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 
-RUN apt-get update && apt-get install -y python${PYTHON_VERSION} \
+RUN apt-get update && apt-get install -y python${PYTHON_VERSION}-distutils \
     &&  apt-get clean \
     &&  rm -rf /var/lib/apt/lists/*
 
-RUN useradd -ms /bin/bash rumina
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+
+RUN python3 get-pip.py \
+&&  rm get-pip.py
+
+RUN update-alternatives --install /usr/bin/python3 python /usr/bin/python3.11 1
+
+RUN useradd -ms /bin/bash rumina \
+    && usermod -aG sudo rumina
 
 USER rumina
 
