@@ -17,7 +17,6 @@ ENV MIRAI_DIR=${BOT_HOME}/mirai
 
 RUN apt-get update && apt-get install -y \
     software-properties-common \
-    build-essential \
     sudo \
     git \
     screen \
@@ -26,9 +25,10 @@ RUN apt-get update && apt-get install -y \
     vim \
     openjdk-${JAVA_VERSION}-jre
 
-RUN add-apt-repository ppa:deadsnakes/ppa -y
+RUN add-apt-repository ppa:deadsnakes/ppa
 
 RUN apt-get update && apt-get install -y \
+    build-essential \
     python${PYTHON_VERSION} \
     python${PYTHON_VERSION}-dev \
     python${PYTHON_VERSION}-distutils
