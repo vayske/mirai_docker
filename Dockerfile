@@ -52,6 +52,5 @@ USER bot
 
 WORKDIR ${BOT_HOME}
 
-RUN git clone -b ${BRANCH} --progress https//${GIT_PAT}@${ARIADNE_GIT} ariadne
-RUN git clone -b ${BRANCH} --progress https//${GIT_PAT}@${MIRAI_GIT} mirai
-
+RUN git clone -b ${BRANCH} --progress "https://${GIT_PAT}@${ARIADNE_GIT}" ariadne
+RUN git clone -b ${BRANCH} --progress "https://${GIT_PAT}@${MIRAI_GIT}" mirai

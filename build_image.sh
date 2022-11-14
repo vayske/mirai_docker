@@ -2,7 +2,8 @@
 
 python_version=3.11
 java_version=17
-arg_list=( python_version java_version mirai_git ariadne_git git_pat image_name )
+image_name=bot
+arg_list=( python_version java_version mirai_git ariadne_git git_pat )
 
 # do not include https:// for git url
 for arg_name in ${arg_list[@]}; do
