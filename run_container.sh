@@ -6,6 +6,6 @@ fi
 
 bot_dir=/home/bot
 docker run -dt --name bot \
-    -e "TERM=xterm-256color"
+    -e "TERM=xterm-256color" \
     -v ${backup_dir}:${bot_dir} \
     bot:latest
