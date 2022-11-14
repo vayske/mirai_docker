@@ -18,9 +18,7 @@ RUN apt-get update && apt-get install -y \
     git \
     screen \
     curl \
-    openjdk-${JAVA_VERSION}-jre \
-    firefox \
-    firefox-geckodriver
+    openjdk-${JAVA_VERSION}-jre
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 
