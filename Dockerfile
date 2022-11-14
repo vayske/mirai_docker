@@ -39,11 +39,11 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py \
 &&  rm get-pip.py
 
-RUN usermod -aG sudo bot
-
 RUN echo 'root:password' | chpasswd
 RUN echo 'bot:password' | chpasswd
 
 USER bot
+
+RUN usermod -aG sudo bot
 
 WORKDIR ${BOT_HOME}
