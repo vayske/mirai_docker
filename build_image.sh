@@ -2,13 +2,15 @@
 
 python_version=3.11
 java_version=17
-arg_list=( python_version java_version mirai_git ariadne_git git_pat )
+arg_list=( python_version java_version mirai_git ariadne_git git_pat image_name )
+
+# do not include https:// for git url
 for arg_name in ${arg_list[@]}; do
     if [ -z "${!arg_name}" ]; then
         read -p "Enter $arg_name: " $arg_name
     fi
 done
-image_name='sirius'
+
 docker build -t ${image_name} \
     --build-arg "PYTHON_VERSION=${python_version}" \
     --build-arg "JAVA_VERSION=${java_version}" \

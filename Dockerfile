@@ -10,8 +10,7 @@ ARG GIT_PAT
 
 ENV LANG=C.UTF-8
 ENV TERM=xterm-256color
-ENV RUMINA_HOME=/home/rumina
-ENV BOT_HOME=${RUMINA_HOME}/bot
+ENV BOT_HOME=/home/bot
 ENV ARIADNE_DIR=${BOT_HOME}/ariadne
 ENV MIRAI_DIR=${BOT_HOME}/mirai
 
@@ -43,25 +42,16 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py \
 &&  rm get-pip.py
 
-RUN useradd -ms /bin/bash rumina \
-    && usermod -aG sudo rumina
+RUN useradd -ms /bin/bash bot \
+    && usermod -aG sudo bot
 
 RUN echo 'root:password' | chpasswd
-RUN echo 'rumina:password' | chpasswd
+RUN echo 'bot:password' | chpasswd
 
-USER rumina
+USER bot
 
-WORKDIR ${RUMINA_HOME}
+WORKDIR ${BOT_HOME}
 
-RUN mkdir -p ${BOT_HOME}
+RUN git clone -b ${BRANCH} --progress https//${GIT_PAT}@${ARIADNE_GIT} ariadne
+RUN git clone -b ${BRANCH} --progress https//${GIT_PAT}@${MIRAI_GIT} mirai
 
-# RUN mkdir -p ${BOT_HOME} \
-# &&  cd ${BOT_HOME} \
-# &&  git clone -b ${BRANCH} --progress ${ARIADNE_GIT} .
-
-# RUN pip install -r ${ARIADNE_DIR}/requirements.txt
-
-# RUN cd ${BOT_HOME} \
-# &&  rm -rf .git*
-
-# ENTRYPOINT [ "/home/rumina/docker/init.sh" ]
