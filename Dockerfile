@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y python${PYTHON_VERSION} \
     &&  apt-get clean \
     &&  rm -rf /var/lib/apt/lists/*
 
+RUN useradd -ms /bin/bash rumina
 USER rumina
 
 RUN mkdir -p ${BOT_HOME}
