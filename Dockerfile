@@ -6,7 +6,8 @@ ARG JAVA_VERSION
 
 ENV LANG=C.UTF-8
 ENV TERM=xterm-256color
-ENV BOT_HOME=/home/bot
+ENV HOME=/home/bot
+ENV BOT_HOME=${HOME}/bot
 ENV ARIADNE_DIR=${BOT_HOME}/ariadne
 ENV MIRAI_DIR=${BOT_HOME}/mirai
 
@@ -14,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     sudo \
     git \
-    screen \
     tmux \
     curl \
     vim \
@@ -48,4 +48,4 @@ USER bot
 
 WORKDIR ${BOT_HOME}
 
-RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ${BOT_HOME}/.bashrc
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ${HOME}/.bashrc
