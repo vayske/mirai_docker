@@ -39,8 +39,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py \
 &&  rm get-pip.py
 
-RUN useradd -ms /bin/bash bot \
-    && usermod -aG sudo bot
+RUN usermod -aG sudo bot
 
 RUN echo 'root:password' | chpasswd
 RUN echo 'bot:password' | chpasswd
