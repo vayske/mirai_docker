@@ -17,6 +17,7 @@ ENV MIRAI_DIR=${BOT_HOME}/mirai
 
 RUN apt-get update && apt-get install -y \
     software-properties-common \
+    build-essential \
     sudo \
     git \
     screen \
