@@ -3,10 +3,6 @@ FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PYTHON_VERSION
 ARG JAVA_VERSION
-ARG MIRAI_GIT
-ARG ARIADNE_GIT
-ARG BRANCH=main
-ARG GIT_PAT
 
 ENV LANG=C.UTF-8
 ENV TERM=xterm-256color
@@ -52,5 +48,4 @@ USER bot
 
 WORKDIR ${BOT_HOME}
 
-RUN git clone -b ${BRANCH} --progress "https://${GIT_PAT}@${ARIADNE_GIT}" ariadne
-RUN git clone -b ${BRANCH} --progress "https://${GIT_PAT}@${MIRAI_GIT}" mirai
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ${BOT_HOME}/.bashrc
