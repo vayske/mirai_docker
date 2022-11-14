@@ -1,9 +1,6 @@
 #!/bin/bash
 
-if [ -z "${backup_dir}" ]; then
-    read -p "Enter backup dir: " backup_dir
-fi
-
+backup_dir=${HOME}/bot
 bot_dir=/home/bot/bot
 docker run -dt --name bot \
     -e "TERM=xterm-256color" \
