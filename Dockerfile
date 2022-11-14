@@ -47,5 +47,3 @@ RUN echo 'bot:password' | chpasswd
 USER bot
 
 WORKDIR ${BOT_HOME}
-
-RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ${HOME}/.bashrc
