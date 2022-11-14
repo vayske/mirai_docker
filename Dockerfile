@@ -46,6 +46,9 @@ RUN python3 get-pip.py \
 RUN useradd -ms /bin/bash rumina \
     && usermod -aG sudo rumina
 
+RUN echo 'root:password' | chpasswd
+RUN echo 'rumina:password' | chpasswd
+
 USER rumina
 
 WORKDIR ${RUMINA_HOME}
