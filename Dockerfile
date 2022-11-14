@@ -45,8 +45,8 @@ RUN useradd -ms /bin/bash ${USERNAME} \
     && usermod -aG sudo ${USERNAME}
 
 RUN echo 'root:password' | chpasswd
-RUN echo 'bot:password' | chpasswd
+RUN echo '${USERNAME}:password' | chpasswd
 
-USER bot
+USER ${USERNAME}
 
 WORKDIR ${BOT_HOME}
