@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -z "${!backup_dir}" ]; then
-    read -p "Enter $backup_dir: " $backup_dir
+if [ -z "${backup_dir}" ]; then
+    read -p "Enter backup dir: " backup_dir
 fi
 
 bot_dir=/home/bot
