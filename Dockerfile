@@ -39,13 +39,14 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py \
     && rm get-pip.py
 
-RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /root/.bashrc
-
 RUN useradd -ms /bin/bash ${USERNAME} \
     && usermod -aG sudo ${USERNAME}
 
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /root/.bashrc
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' /home/${USERNAME}/.bashrc
+
 RUN echo 'root:password' | chpasswd
-RUN echo '${USERNAME}:password' | chpasswd
+RUN echo "${USERNAME}:password" | chpasswd
 
 USER ${USERNAME}
 
