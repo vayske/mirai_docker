@@ -13,17 +13,20 @@ ENV BOT_HOME=/home/bot
 ENV ARIADNE_DIR=${BOT_HOME}/ariadne
 ENV MIRAI_DIR=${BOT_HOME}/mirai
 
-RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update && apt-get install -y \
+    software-properties-common \
     git \
     screen \
     curl \
     openjdk-${JAVA_VERSION}-jre \
     firefox \
-    firefox-geckodriver \
-    python${PYTHON_VERSION} \
-&&  apt-get clean \
-&&  rm -rf /var/lib/apt/lists/*
+    firefox-geckodriver
+
+RUN add-apt-repository ppa:deadsnakes/ppa
+
+RUN apt-get update && apt-get install -y python${PYTHON_VERSION} \
+    &&  apt-get clean \
+    &&  rm -rf /var/lib/apt/lists/*
 
 # RUN mkdir -p ${BOT_HOME} \
 # &&  cd ${BOT_HOME} \
