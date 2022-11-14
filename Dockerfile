@@ -17,8 +17,10 @@ ENV MIRAI_DIR=${BOT_HOME}/mirai
 
 RUN apt-get update && apt-get install -y \
     software-properties-common \
+    sudo \
     git \
     screen \
+    tmux \
     curl \
     vim \
     openjdk-${JAVA_VERSION}-jre
