@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     openjdk-${JAVA_VERSION}-jre
 
-RUN add-apt-repository ppa:deadsnakes/ppa
+RUN add-apt-repository ppa:deadsnakes/ppa -y
 
 RUN apt-get update && apt-get install -y \
     python${PYTHON_VERSION} \
